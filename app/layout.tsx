@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,10 +20,20 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
+      lang="fr"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <header>
+          <Link href="/rules">rules</Link><br />
+          <Link href="/leaderboard">leaderboard</Link>
+          <Link href="/"><h1>Bienvenue sur le jeu FFVII Remake</h1></Link>
+          <Link href="/profil">profil</Link>
+        </header>
+        <main>
+          {children}
+        </main>
+      </body>
     </html>
   );
 }
